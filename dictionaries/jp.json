@@ -1,0 +1,17 @@
+{
+    "navigation": {
+      "home": "ホーム",
+      "about": "約"
+    },
+    "page": {
+      "home": {
+        "title": "NextJs i18nへようこそ",
+        "description": "NextJs 13アプリルーターの国際化"
+      },
+      "about": {
+        "title": "私たちについて",
+        "description": "これは「約」のページです"
+      }
+    }
+  }
+  

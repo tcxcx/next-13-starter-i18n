@@ -10,8 +10,7 @@ function getLocale(request: NextRequest): string | undefined {
   const negotiatorHeaders: Record<string, string> = {}
   request.headers.forEach((value, key) => (negotiatorHeaders[key] = value))
 
-  // @ts-ignore locales are readonly
-  const locales: string[] = i18n.locales
+  const locales: readonly string[] = i18n.locales
   const languages = new Negotiator({ headers: negotiatorHeaders }).languages()
 
   const locale = matchLocale(languages, locales, i18n.defaultLocale)
@@ -19,10 +18,19 @@ function getLocale(request: NextRequest): string | undefined {
 }
 
 export function middleware(request: NextRequest) {
-  const pathname = request.nextUrl.pathname
+  const pathname = request.nextUrl.pathname;
+
+  // Add a regex to match common static asset file extensions
+  const isStaticAsset = /\.(jpg|jpeg|png|gif|css|js|svg|ico|woff|woff2|ttf|otf)$/.test(pathname);
+  
+  if (isStaticAsset) {
+    // Allow the request to proceed without redirection if it's for a static asset
+    return;
+  }
+
   const pathnameIsMissingLocale = i18n.locales.every(
     locale => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
-  )
+  );
 
   // Redirect if there is no locale
   if (pathnameIsMissingLocale) {

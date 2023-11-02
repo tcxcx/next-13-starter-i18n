@@ -1,0 +1,17 @@
+{
+    "navigation": {
+      "home": "Inicio",
+      "about": "Acerca de"
+    },
+    "page": {
+      "home": {
+        "title": "Bienvenido a NextJs i18n",
+        "description": "Internacionalización en el enrutador de aplicaciones NextJs 13"
+      },
+      "about": {
+        "title": "Sobre nosotros",
+        "description": "Esta es la página acerca de"
+      }
+    }
+  }
+  

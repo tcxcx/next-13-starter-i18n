@@ -1,4 +1,4 @@
-/** @type {import('tailwindcss').Config} */
+/** @type {import('tailwindcss/tailwind-config').TailwindConfig} */
 module.exports = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -6,6 +6,15 @@ module.exports = {
     './app/**/*.{js,ts,jsx,tsx,mdx}'
   ],
   theme: {
+    extend: {
+      fontFamily: {
+        sans: ['var(--font-geist-sans)'],
+        mono: ['var(--font-geist-mono)'],
+        'basement': ['BasementGrotesque', 'sans-serif'],
+        'belgro': ['"Belgro"', 'sans'],
+				'brandon': ['"Brandon_reg"', 'sans']
+      },
+    },
     container: {
       center: true,
       padding: {
